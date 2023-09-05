@@ -8,7 +8,6 @@ is an E-Commerce Web portal built using
 - Javascript
 - CSS
 - Bootstrap
-- #### Tomcat
 
 ## Project Title: E-commerce Product Catalog
 
