@@ -1,6 +1,5 @@
 package com.practice.project.configuration;
 
-import com.practice.project.modal.CustomUserDetail;
 import com.practice.project.service.CustomUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,9 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +19,7 @@ public class SecurityConfig {
     GoogleOAuth2SuccessHandler googleOAuth2SuccessHandler;
     @Autowired
     CustomUserDetailService customUserDetailService;
-~
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(requests -> requests

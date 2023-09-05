@@ -4,7 +4,6 @@ import com.practice.project.global.GlobalData;
 import com.practice.project.modal.Product;
 import com.practice.project.modal.User;
 import com.practice.project.modal.UserCart;
-import com.practice.project.repository.UserRepo;
 import com.practice.project.service.CartService;
 import com.practice.project.service.CustomUserDetailService;
 import com.practice.project.service.ProductService;
@@ -13,11 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class CartController  {
