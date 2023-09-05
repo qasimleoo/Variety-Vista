@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" type="image/png"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Login</title>
+</head>
+<body>
+<div class="page-loader">
+    <div class="spinner"></div>
+    <div class="txt">Please wait<br>Page is Loading</div>
+</div>
+<header class="header">
+    <nav class="navbar">
+        <div class="row container d-flex">
+            <div class="logo">
+                <img alt="" class="head_logo" th:src="@{/images/logo.png}"/>
+            </div>
+            <div class="nav-list d-flex">
+                <div class="close">
+                    <i class="bx bx-x"></i>
+                </div>
+                <a th:href="@{/}" id="mbl-margin">Home</a>
+                <hr>
+                <a th:href="@{/shop}">Shop</a>
+                <hr>
+                <a th:href="@{/register}" href="#">Signup</a>
+                <hr>
+            </div>
+            <!-- Hamburger -->
+            <div class="hamburger">
+                <i class="bx bx-menu-alt-right"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div class="cart-hero">
+        <div class="login-container">
+            <div class="login-row">
+                <div class="login-row-1">
+                    <h2>Login</h2>
+                    <p>Please fill out this to login</p>
+                    <form th:action="@{/login}" method="post">
+                        <div class="form-group">
+                            <label for="email" class="email-label">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Your Email" class="form-control ">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control " placeholder="Password" name="password" id="password">
+                        </div>
+                        <input type="submit" value="Login" class="login-btn login-responsive">
+                        <div th:if="${param.error}" class="alert alert-error text-danger">
+                            Invalid username or password.
+                        </div>
+                    </form>
+                </div>
+                <div class="login-row-2">
+                    <form th:action="@{/login}" method="post">
+                        <span class="span-no-account">Don't have an account <a class="linkControl login-btn" href="./register.html"
+                                                        th:href="@{/register}">Register here</a></span>
+                        <br>
+                    </form>
+                    <br>
+                    <h2>OR</h2>
+                    <a href="/oauth2/authorization/google" class="linkControl login-btn">Sign-In with google </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.page-loader').style.display = 'none';
+            }, 500);
+        });
+    });
+</script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

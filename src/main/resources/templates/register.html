@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" type="image/png"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Register</title>
+</head>
+<body>
+<div class="page-loader">
+    <div class="spinner"></div>
+    <div class="txt">Please wait<br>Page is Loading</div>
+</div>
+<header class="header">
+    <nav class="navbar">
+        <div class="row container d-flex">
+            <div class="logo">
+                <img alt="" class="head_logo" th:src="@{/images/logo.png}"/>
+            </div>
+            <div class="nav-list d-flex">
+                <div class="close">
+                    <i class="bx bx-x"></i>
+                </div>
+                <a th:href="@{/}" id="mbl-margin">Home</a>
+                <hr>
+                <a th:href="@{/shop}">Shop</a>
+                <hr>
+                <a th:href="@{/login}" href="#">Login</a>
+                <hr>
+            </div>
+            <!-- Hamburger -->
+            <div class="hamburger">
+                <i class="bx bx-menu-alt-right"></i>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="cart-hero">
+    <div class="login-container">
+        <div class="login-row">
+            <div class="login-row-1 register-row-1">
+                <h2>Sign Up Now</h2>
+                <p>Please fill out this to register</p>
+                <form th:action="@{/register}" th:object="${user}" method="post">
+                    <div class="form-group form-group-register">
+                        <label for="firstName">First Name</label>
+                        <input type="text" name="firstName" id="firstName" required placeholder="Your Firstname" class="form-control form-control-lg form-control-register">
+                    </div>
+                    <div class="form-group form-group-register">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" name="lastName" id="lastName" required placeholder="Your Lastname" class="form-control form-control-lg form-control-register">
+                    </div>
+                    <div class="form-group form-group-register">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control form-control-register" required minlength="6" placeholder="Email" name="email" id="email"
+                               aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group form-group-register">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control signup-password form-control-register" required placeholder="Password" name="password"
+                               id="password">
+                    </div>
+                    <input type="submit" value="Register" class="login-btn register-responsive">
+                </form>
+            </div>
+            <div class="login-row-2 register-row-2">
+                <form th:action="@{/login}" method="post">
+                        <span class="span-no-account">Already have an Account<a class="linkControl login-btn" href="./login.html"
+                                                                               th:href="@{/login}">Login here</a></span>
+                    <br>
+                </form>
+                <br>
+                <h2 class="margin-register-google">OR</h2>
+                <a href="/oauth2/authorization/google" class="linkControl login-btn">Sign-In with google </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.page-loader').style.display = 'none';
+            }, 500);
+        });
+    });
+</script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

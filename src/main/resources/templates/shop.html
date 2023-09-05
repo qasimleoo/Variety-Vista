@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" type="image/png"/>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+        <link th:href="@{https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css}" rel="stylesheet"/>
+        <title>Shop</title>
+    </head>
+    <body>
+    <div class="page-loader">
+        <div class="spinner"></div>
+        <div class="txt">Please wait<br>Page is Loading</div>
+    </div>
+    <header th:replace="~{header :: header}"></header>
+    <header class="header">
+        <div class="hero">
+            <div class="row container d-flex">
+                <div class="col">
+                    <span class="subtitle">Limited Time Only For Summer</span>
+                    <h1>fash<span class="i">i</span>on</h1>
+                    <p>LOOK YOUR BEST ON YOUR BEST DAY</p>
+                </div>
+                <img alt="" class="boy-in-cart" th:src="@{/images/boy-in-cart.png}"/>
+            </div>
+        </div>
+    </header>
+    <!-- ====== Hero Area ====== -->
+
+    <!-- ====== Collection ====== -->
+    <section class="section collection">
+        <div class="title">
+            <span>COLLECTION</span>
+            <h2>Our Top Collection</h2>
+        </div>
+        <div class="filters d-flex">
+            <a  th:href="@{/shop}"><li class="products-btn"><b>All Products</b></li></a>
+            <a th:each="category, iStat : ${categories}" th:href="@{/shop/category/{id}(id=${category.id})}">
+                <li class="products-btn" th:text="${category.name}"></li>
+            </a>
+        </div>
+        <div class="products-flex">
+            <div class="products container" th:each="product : ${products}" style="margin-top: 30px">
+                <div class="product">
+                    <div class="top d-flex">
+                        <img class="product-img" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                        <div class="icon d-flex">
+                            <i class="bx bxs-heart"></i>
+                        </div>
+                    </div>
+                    <div class="bottom">
+                        <div class="d-flex">
+                            <div class="d-flex-inner">
+                                <h4 th:text="${product.name}"></h4>
+                                <p class="products-p" th:text="${product.description}"></p>
+                            </div>
+                            <a class="btn cart-btn shop-cart-btn" th:href="@{/shop/viewproduct/{id}(id=${product.id})}">View Product</a>
+                        </div>
+                        <div class="d-flex">
+                            <div class="price" th:text="Rs. + ${product.price}"></div>
+                            <div class="rating">
+                                <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer th:replace="~{footer :: footer}"></footer>
+    <script th:src="@{/js/script.js}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.page-loader').style.display = 'none';
+            }, 500);
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" type="image/png"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css}"/>
+    <title>View Product</title>
+</head>
+<body>
+<div class="page-loader">
+    <div class="spinner"></div>
+    <div class="txt">Please wait<br>Page is Loading</div>
+</div>
+<header th:replace="~{header :: header}"></header>
+    <div class="cart-hero">
+        <div class="row container d-flex vp-justify">
+            <div class="vp-row">
+                <div class="vp-row-child-1">
+                    <img class="vp-img" src="" th:src="@{${'/productImages/' + product.imageName}}"
+                         alt="">
+                </div>
+                <div class="vp-row-child-2">
+                    <h2 th:text="${product.name}"></h2>
+                    <p th:text="${product.category.name}"></p>
+                    <h2>₹ <span th:text="${product.price}"></span></h2>
+                    <h5>Weight:
+                        <span th:text="${product.weight}"></span> grams.
+                    </h5>
+                    <p th:text="${product.description}"></p>
+                    <a href="" th:href="@{/addToCart/{id}(id = ${product.id})}" class="vp-btn">Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<footer th:replace="~{footer :: footer}"></footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.page-loader').style.display = 'none';
+            }, 500);
+        });
+    });
+</script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

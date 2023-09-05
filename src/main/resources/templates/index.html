@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" type="image/png"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" type="image/png"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css}"/>
+    <title>Home</title>
+</head>
+<body>
+<div class="page-loader">
+    <div class="spinner"></div>
+    <div class="txt">Please wait<br>Page is Loading</div>
+</div>
+<header th:replace="~{header :: header}"></header>
+<header class="header">
+    <!-- ====== Hero Area ====== -->
+    <div class="hero">
+        <div class="row container d-flex">
+            <div class="col">
+                <span class="subtitle">Limited Time Only For Summer</span>
+                <h1>fash<span class="i">i</span>on</h1>
+                <p>LOOK YOUR BEST ON YOUR BEST DAY</p>
+                <a th:href="@{/shop}" style="cursor:pointer"><button class="btn">Explore Now!</button></a>
+            </div>
+            <img alt="" class="boy-in-cart" th:src="@{/images/boy-in-cart.png}"/>
+        </div>
+    </div>
+</header>
+<!-- ====== New Arrival ====== -->
+<section class="section new-arrival">
+    <div class="title">
+        <span>NEW ARRIVAL</span>
+        <h2>Latest Collection</h2>
+    </div>
+    <div class="row container">
+        <div class="col col-1">
+            <a th:href="@{/shop/category/204}">
+            <img alt="" th:src="@{/images/poster-1.png}"/>
+            <h3>
+                2023 Trends <br/>
+                Kids’s Smart categories
+            </h3>
+            </a>
+        </div>
+        <div class="col col-2">
+            <a th:href="@{/shop/category/203}">
+            <img alt="" th:src="@{/images/poster-2.png}"/>
+            <h3>
+                New Arrivals <br/>
+                Check out Beauty products now
+            </h3>
+        </a>
+        </div>
+        <div class="col col-3">
+            <a th:href="@{/shop/category/203}">
+            <img alt="" th:src="@{/images/poster-3.png}"/>
+            <h3>
+                2023 Trends <br/>
+                Sale - 70% off<br/>
+                <span>Summer sale is here. Discover more.</span>
+            </h3>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ====== Categories ====== -->
+
+<section class="section categories">
+    <div class="title">
+        <span>CATEGORIES</span>
+        <h2>2023 Latest Collection</h2>
+    </div>
+    <div class="products-flex">
+        <div class="products container" th:each="product : ${products}" style="margin-top: 30px">
+            <div class="product">
+                <div class="top d-flex">
+                    <img class="product-img" th:src="@{${'/productImages/' + product.imageName}}" th:alt="${product.name}">
+                    <div class="icon d-flex">
+                        <i class="bx bxs-heart"></i>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="d-flex">
+                        <div class="d-flex-inner">
+                            <h4 th:text="${product.name}"></h4>
+                            <p class="products-p" th:text="${product.description}"></p>
+                        </div>
+                        <a class="btn cart-btn shop-cart-btn" th:href="@{/addToCart/{id}(id = ${product.id})}">Add to Cart</a>
+                    </div>
+                    <div class="d-flex">
+                        <div class="price" th:text="Rs. + ${product.price}"></div>
+                        <div class="rating">
+                            <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button d-flex">
+        <a th:href="@{/shop}" class="btn loadmore">Load More</a>
+    </div>
+</section>
+
+<!-- ====== Statistics ====== -->
+<section class="section statistics">
+    <div class="title">
+        <span>STATS</span>
+        <h2>Our Statistics</h2>
+    </div>
+
+    <div class="row container">
+        <div class="col">
+            <div class="icon">
+                <i class="bx bxs-check-square"></i>
+            </div>
+            <h3>Easy Order System</h3>
+            <p>Lorem Ispum is a placeholder text commomly used as a free text.</p>
+        </div>
+        <div class="col">
+            <div class="icon">
+                <i class="bx bxs-user"></i>
+            </div>
+            <h3>On Time Delievery</h3>
+            <p>Lorem Ispum is a placeholder text commomly used as a free text.</p>
+        </div>
+        <div class="col">
+            <div class="icon">
+                <i class="bx bxs-dollar-circle"></i>
+            </div>
+            <h3>Money Back Gaurantee</h3>
+            <p>Lorem Ispum is a placeholder text commomly used as a free text.</p>
+        </div>
+        <div class="col">
+            <div class="icon">
+                <i class="bx bxs-user"></i>
+            </div>
+            <h3>24/7 Customer Support</h3>
+            <p>Lorem Ispum is a placeholder text commomly used as a free text.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ====== Blogs ====== -->
+<section class="section blog">
+    <div class="title">
+        <span>BLOGS</span>
+        <h2>Latest News</h2>
+    </div>
+
+    <div class="row container">
+        <a th:href="@{/shop/category/206}">
+        <div class="col">
+            <div class="top">
+                <img alt="" th:src="@{/images/blog-1.png}"/>
+            </div>
+            <div class="bottom">
+                <h3>Trendy</h3>
+                <h4>
+                    Check out all the trends. Throw in cart and buy Now.
+                </h4>
+                <span class="date-display" id="date1"></span>
+            </div>
+        </div>
+        </a>
+        <a th:href="@{/shop/category/202}">
+            <div class="col">
+                <div class="top">
+                    <img alt="" th:src="@{/images/blog-2.png}"/>
+                </div>
+                <div class="bottom">
+                    <h3>Women's Collection</h3>
+                    <h4>
+                        Explore all your favorite products from dresses to beauty products.
+                    </h4>
+                    <span class="date-display" id="date2"></span>
+                </div>
+            </div>
+        </a>
+        <a th:href="@{/shop/category/203}">
+            <div class="col">
+                <div class="top">
+                    <img alt="" th:src="@{/images/blog-3.png}"/>
+                </div>
+                <div class="bottom">
+                    <h3>Men's Collection</h3>
+                    <h4>
+                        Explore all the men's products from dresses to fragrances. Buy Now!
+                    </h4>
+                    <span class="date-display" id="date3"></span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<footer th:replace="~{footer :: footer}"></footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.page-loader').style.display = 'none';
+            }, 500);
+        });
+    });
+
+    var currentDate = new Date();
+    var d1 = currentDate.setDate(currentDate.getDate());
+    var formattedDate = currentDate.toISOString().split('T')[0];
+    document.getElementById('date1').textContent = formattedDate;
+
+    var d2 = currentDate.setDate(currentDate.getDate() -13);
+    var formattedDate = currentDate.toISOString().split('T')[0];
+    document.getElementById('date2').textContent = formattedDate;
+
+    var d3 = currentDate.setDate(currentDate.getDate() -40);
+    var formattedDate = currentDate.toISOString().split('T')[0];
+    document.getElementById('date3').textContent = formattedDate;
+</script>
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
