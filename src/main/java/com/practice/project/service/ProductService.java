@@ -1,6 +1,5 @@
 package com.practice.project.service;
 
-import com.practice.project.modal.Category;
 import com.practice.project.modal.Product;
 import com.practice.project.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.practice.project.controller;
 
-import com.practice.project.global.GlobalData;
 import com.practice.project.modal.Role;
 import com.practice.project.modal.User;
 import com.practice.project.repository.RoleRepo;

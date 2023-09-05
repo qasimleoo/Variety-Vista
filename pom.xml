@@ -11,7 +11,7 @@
 	<groupId>com.practice</groupId>
 	<artifactId>project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>project</name>
+	<name>E-Commerce-Catalog</name>
 	<description>Project for Spring Boot Practice</description>
 	<properties>
 		<java.version>17</java.version>
